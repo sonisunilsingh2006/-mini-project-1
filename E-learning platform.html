@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Learning Platform</title>
-
 <style>
 *{
     margin:0;
@@ -12,73 +11,60 @@
     box-sizing:border-box;
     font-family:Arial,sans-serif;
 }
-
 body{
     background:#f4f6f9;
 }
-
 header{
     background:#2563eb;
     color:white;
     padding:15px;
     text-align:center;
 }
-
 .container{
     display:grid;
     grid-template-columns:250px 1fr;
     min-height:100vh;
 }
-
 .sidebar{
     background:#1e293b;
     color:white;
     padding:20px;
 }
-
 .sidebar h2{
     margin-bottom:20px;
 }
-
 .sidebar ul{
     list-style:none;
 }
-
 .sidebar li{
     background:#334155;
     margin-bottom:10px;
     padding:12px;
     border-radius:5px;
 }
-
 .main{
     padding:20px;
 }
-
 .card-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:20px;
 }
-
 .card{
     background:white;
     padding:20px;
     border-radius:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
-
 .card h3{
     margin-bottom:15px;
 }
-
 .course{
     background:#e2e8f0;
     padding:10px;
     margin-top:10px;
     border-radius:5px;
 }
-
 input, textarea{
     width:100%;
     padding:10px;
@@ -86,7 +72,6 @@ input, textarea{
     border:1px solid #ccc;
     border-radius:5px;
 }
-
 button{
     background:#2563eb;
     color:white;
@@ -96,31 +81,25 @@ button{
     border-radius:5px;
     cursor:pointer;
 }
-
 .activity{
     margin-top:20px;
     background:white;
     padding:20px;
     border-radius:10px;
 }
-
 .activity ul{
     margin-top:10px;
 }
-
 .activity li{
     margin-bottom:8px;
 }
 </style>
 </head>
 <body>
-
 <header>
     <h1>E-Learning Platform</h1>
 </header>
-
 <div class="container">
-
     <div class="sidebar">
         <h2>Courses</h2>
         <ul>
@@ -129,146 +108,98 @@ button{
             <li>Database Management</li>
         </ul>
     </div>
-
     <div class="main">
-
         <div class="card-container">
-
             <div class="card">
                 <h3>Available Courses</h3>
-
                 <div class="course">
                     Python Basics - Progress: 80%
                 </div>
-
                 <div class="course">
                     HTML & CSS - Progress: 60%
                 </div>
-
                 <input type="text" id="courseInput"
                 placeholder="New Course">
-
                 <button onclick="addCourse()">
                     Add Course
                 </button>
             </div>
-
             <div class="card">
                 <h3>Assignments</h3>
-
                 <div id="assignmentList">
                     <p>Build Student Attendance System</p>
                     <p>Create CRUD API Project</p>
                 </div>
-
                 <input type="text"
                 id="assignmentInput"
                 placeholder="New Assignment">
-
                 <button onclick="addAssignment()">
                     Add Assignment
                 </button>
             </div>
-
             <div class="card">
                 <h3>Discussion Forum</h3>
-
                 <div id="comments">
                     <p>Instructor: Welcome to the course.</p>
                 </div>
-
                 <textarea id="commentInput"
                 placeholder="Write Comment"></textarea>
-
                 <button onclick="addComment()">
                     Post Comment
                 </button>
             </div>
-
         </div>
-
         <div class="activity">
             <h3>Activity Logs</h3>
-
             <ul id="logs">
                 <li>Student enrolled in Python Course</li>
                 <li>Assignment uploaded</li>
             </ul>
         </div>
-
     </div>
-
 </div>
-
 <script>
-
 function addCourse(){
-
-    let course =
-    document.getElementById("courseInput").value;
-
+    let course = document.getElementById("courseInput").value;
     if(course.trim() !== ""){
-
         let div = document.createElement("div");
         div.className = "course";
         div.innerHTML = course + " - Progress: 0%";
-
         document.querySelector(".card").appendChild(div);
-
         addLog("New course added: " + course);
-
         document.getElementById("courseInput").value="";
     }
 }
-
 function addAssignment(){
-
     let assignment =
     document.getElementById("assignmentInput").value;
-
     if(assignment.trim() !== ""){
-
         let p = document.createElement("p");
         p.textContent = assignment;
-
         document.getElementById("assignmentList")
         .appendChild(p);
-
         addLog("Assignment added: " + assignment);
-
         document.getElementById("assignmentInput").value="";
     }
 }
-
 function addComment(){
-
     let comment =
     document.getElementById("commentInput").value;
-
     if(comment.trim() !== ""){
-
         let p = document.createElement("p");
         p.textContent = "Student: " + comment;
-
         document.getElementById("comments")
         .appendChild(p);
-
         addLog("New discussion comment posted");
-
         document.getElementById("commentInput").value="";
     }
 }
-
 function addLog(message){
-
     let li = document.createElement("li");
     li.textContent = message;
-
     document.getElementById("logs")
     .appendChild(li);
 }
-
 </script>
-
 </body>
 </html>
